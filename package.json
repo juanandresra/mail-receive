@@ -1,0 +1,15 @@
+{
+  "name": "mail-receive",
+  "version": "0.0.5",
+  "description": "Imap client to receive emails in real time",
+  "main": "index.js",
+  "author": "Juan Andres Rodriguez <andres_rod24@hotmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^3.1.0",
+    "events": "^2.0.0",
+    "imap": "^0.8.19",
+    "mailparser": "^2.2.0",
+    "util": "^0.10.3"
+  }
+}
