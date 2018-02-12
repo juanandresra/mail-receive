@@ -2,7 +2,11 @@
   "name": "mail-receive",
   "version": "0.0.5",
   "description": "Imap client to receive emails in real time",
-  "main": "index.js",
+  "main": "index.js",  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Obiot24/mail-receive.git"
+  },
   "author": "Juan Andres Rodriguez <andres_rod24@hotmail.com>",
   "license": "ISC",
   "dependencies": {
