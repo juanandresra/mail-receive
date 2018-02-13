@@ -1,6 +1,6 @@
 {
   "name": "mail-receive",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Imap client to receive emails in real time",
   "main": "index.js",
   "repository": {
