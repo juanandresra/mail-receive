@@ -38,13 +38,23 @@ const imap = {
 };
 
 const n = notifier(imap);
-n.on('end', () => n.start())
-    .on('mail', mail => console.log(
-        mail.headers.get('subject'),
-        mail.from, 
-        mail.textAsHtml  
-    ))
-    .start();
+
+n.on('end', () => console.log(`${imap.user} offline`))
+    .on('mail', mail => 
+        console.log(
+            mail.headers.get('subject'),
+            mail.from,
+            mail.textAsHtml
+        )
+    )
+    .on('connected', () => {
+        console.log(` ${imap.user} logged`)
+    })
+    .on('error', err => {
+        console.log(err)
+    })
+    .start()
+
 ```
 
 ```shell
@@ -59,11 +69,24 @@ n.on('end', () => n.start())
 
 ```
 
+## Event Handler
+
+- start() = Start the imap connection
+- stop() = Close the imap connection
+
+## Events On()
+    
+- .on('connected', () => { console.log('IMAP connected') } )
+- .on("mail', mail => { console.log(mail) } )
+- .on("error', err => { console.log(err) } )
+- .on("end', () => { console.log('IMAP close') } ) 
+
+
 ## Mail object
 
 Parsed mail* object has the following properties
 
-- subject is the subject line (also available from the header mail.headers.get(‘subject’))
+- subject (also available from the header mail.headers.get(‘subject’))
 - from is an address object for the From: header
 - to is an address object for the To: header
 - cc is an address object for the Cc: header
