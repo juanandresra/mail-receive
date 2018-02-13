@@ -7,9 +7,9 @@ const util = require('util'),
     simpleParser = require('mailparser').simpleParser,
     EventEmitter = require('events').EventEmitter;
 
-var dbg = debug('mailnotifier');
+var dbg = debug('mailreceive');
 
-function Notifier(opts, dbg) {
+function MailReceive(opts, dbg) {
     EventEmitter.call(this);
     var self = this;
     self.options = opts;
@@ -24,13 +24,13 @@ function Notifier(opts, dbg) {
     }
 }
 
-util.inherits(Notifier, EventEmitter);
+util.inherits(MailReceive, EventEmitter);
 
 module.exports = function (opts, customDbg) {
-    return new Notifier(opts, customDbg);
+    return new MailReceive(opts, customDbg);
 };
 
-Notifier.prototype.start = function () {
+MailReceive.prototype.start = function () {
     var self = this;
     self.imap = new Imap(self.options);
     self.imap.once('end', function () {
@@ -66,7 +66,7 @@ Notifier.prototype.start = function () {
     return this;
 };
 
-Notifier.prototype.scan = function () {
+MailReceive.prototype.scan = function () {
 
     var self = this, search = self.options.search || ['UNSEEN'];
 
@@ -105,7 +105,7 @@ Notifier.prototype.scan = function () {
     return this;
 };
 
-Notifier.prototype.stop = function () {
+MailReceive.prototype.stop = function () {
     var self = this;
     self.dbg('imap.state before stopping: %s', this.imap.state);
 
@@ -113,10 +113,10 @@ Notifier.prototype.stop = function () {
         this.imap.end();
     }
 
-    self.dbg('notifier stopped');
+    self.dbg('MailReceive stopped');
     return this;
 };
 
-Notifier.prototype.dbg = function (...args) {
+MailReceive.prototype.dbg = function (...args) {
     dbg(...args);
 }

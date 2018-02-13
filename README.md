@@ -24,7 +24,7 @@ npm install mail-receive -S
 ### Simple use
 
 ``` javascript
-const notifier = require('mail-receive');
+const MailReceive = require('mail-receive');
 
 const imap = {
     user: "mail@domain.com",
@@ -37,7 +37,7 @@ const imap = {
     }
 };
 
-const n = notifier(imap);
+const n = MailReceive(imap);
 
 n.on('end', () => console.log(`${imap.user} offline`))
     .on('mail', mail => 
