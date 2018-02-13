@@ -1,8 +1,8 @@
 {
   "name": "mail-receive",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Imap client to receive emails in real time",
-  "main": "index.js",  
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Obiot24/mail-receive.git"
